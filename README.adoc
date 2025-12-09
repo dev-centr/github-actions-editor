@@ -1,0 +1,153 @@
+= GitHub Actions Editor
+:toc: macro
+:toc-title: Contents
+:toclevels: 2
+:icons: font
+
+A desktop GUI application for editing GitHub Actions workflows with marketplace discovery and GitHub integration.
+
+image::https://img.shields.io/badge/rust-1.75+-orange.svg[Rust 1.75+]
+image::https://img.shields.io/badge/iced-0.13-blue.svg[Iced 0.13]
+image::https://img.shields.io/badge/license-MIT-green.svg[MIT License]
+
+toc::[]
+
+== Features
+
+* **Visual Workflow Editor** — Edit GitHub Actions workflows with a desktop-native UI
+* **Marketplace Discovery** — Search and browse actions from the GitHub Marketplace with fuzzy search
+* **GitHub Authentication** — Secure token storage using system keyring
+* **Intelligent Caching** — Offline-capable with TTL-based caching for API responses
+* **Action Metadata** — Auto-fetch and display action inputs, versions, and documentation
+* **Repository Integration** — Discover secrets, variables, and repository settings
+
+== Screenshots
+
+_Coming soon_
+
+== Installation
+
+=== From Source
+
+[source,bash]
+----
+# Clone the repository
+git clone https://github.com/amdphreak/github-actions-editor
+cd github-actions-editor
+
+# Build release binary
+cargo build --release
+
+# Run the application
+./target/release/github-actions-editor
+----
+
+=== Prerequisites
+
+* Rust 1.75 or later
+* On Windows: Visual Studio Build Tools
+* On Linux: `libssl-dev`, `pkg-config`
+* On macOS: Xcode Command Line Tools
+
+== Usage
+
+=== Authentication
+
+1. Launch the application
+2. Enter your GitHub Personal Access Token
+   * Create one at https://github.com/settings/tokens[GitHub Settings → Developer settings → Personal access tokens]
+   * Required scopes: `repo`, `read:org`
+3. Click "Connect"
+
+Your token is stored securely in the system keyring (Windows Credential Manager, macOS Keychain, or Linux Secret Service).
+
+=== Editing Workflows
+
+1. Click "New Workflow" or open an existing `.yml` file
+2. Use the sidebar to navigate jobs and steps
+3. Click on a step to edit its configuration
+4. Use the action browser (right panel) to search and insert marketplace actions
+5. Save your workflow
+
+=== Marketplace Discovery
+
+The action browser supports:
+
+* **Fuzzy search** — Type partial names to find actions
+* **Version selection** — Choose from available tags (v4, v4.1.0, etc.)
+* **Metadata preview** — See inputs, outputs, and descriptions before inserting
+
+== Architecture
+
+[source]
+----
+src/
+├── main.rs           # Application entry point
+├── app.rs            # Main application state and update logic
+├── models/           # Data models (Workflow, Action, Marketplace)
+│   ├── workflow.rs   # GitHub Actions workflow YAML model
+│   ├── action.rs     # Action metadata (action.yml)
+│   └── marketplace.rs# Marketplace search results
+├── github/           # GitHub API integration
+│   ├── auth.rs       # Secure token storage
+│   ├── client.rs     # High-level API client
+│   └── marketplace.rs# Marketplace search and discovery
+├── cache/            # TTL-based caching
+│   ├── store.rs      # File-based cache storage
+│   └── entries.rs    # Cache keys and TTL values
+└── ui/               # Iced UI components
+    ├── theme.rs      # GitHub-inspired dark theme
+    ├── components.rs # Reusable widgets
+    └── views.rs      # Screen layouts
+----
+
+== Development
+
+[source,bash]
+----
+# Run in debug mode
+cargo run
+
+# Run with logging
+RUST_LOG=debug cargo run
+
+# Run tests
+cargo test
+
+# Check for issues
+cargo clippy
+----
+
+== Configuration
+
+The application stores data in platform-specific directories:
+
+|===
+| Platform | Config Directory
+
+| Windows
+| `%APPDATA%\amdphreak\github-actions-editor`
+
+| macOS
+| `~/Library/Application Support/com.amdphreak.github-actions-editor`
+
+| Linux
+| `~/.config/github-actions-editor`
+|===
+
+Cache data is stored separately in the platform's cache directory.
+
+== Contributing
+
+Contributions are welcome! Please open an issue or pull request.
+
+== License
+
+MIT License. See link:LICENSE[LICENSE] file.
+
+== Acknowledgments
+
+* https://iced.rs[Iced] — Cross-platform GUI library for Rust
+* https://octocrab.rs[Octocrab] — GitHub API client
+* https://github.com/lotabout/fuzzy-matcher[fuzzy-matcher] — Fuzzy string matching
+
