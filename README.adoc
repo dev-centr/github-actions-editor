@@ -1,20 +1,37 @@
-link:https://github.com/dev-centr/github-actions-editor[image:https://img.shields.io/badge/repo-GitHub-24292e?style=flat[Repository]]
+ifndef::env-github[:icons: font]
+:toc: preamble
+:toclevels: 2
+:sectanchors:
+
+ifndef::env-github[]
+image:https://img.shields.io/github/contributors/dev-centr/github-actions-editor.svg?style=for-the-badge[Contributors,link=https://github.com/dev-centr/github-actions-editor/graphs/contributors]
+image:https://img.shields.io/github/forks/dev-centr/github-actions-editor.svg?style=for-the-badge[Forks,link=https://github.com/dev-centr/github-actions-editor/network/members]
+image:https://img.shields.io/github/stars/dev-centr/github-actions-editor.svg?style=for-the-badge[Stars,link=https://github.com/dev-centr/github-actions-editor/stargazers]
+image:https://img.shields.io/github/issues/dev-centr/github-actions-editor.svg?style=for-the-badge[Issues,link=https://github.com/dev-centr/github-actions-editor/issues]
+image:https://img.shields.io/github/license/dev-centr/github-actions-editor.svg?style=for-the-badge[License,link=https://github.com/dev-centr/github-actions-editor/blob/main/LICENSE]
+endif::[]
+
+ifdef::env-github[]
+image:https://img.shields.io/github/contributors/dev-centr/github-actions-editor.svg?style=for-the-badge[Contributors]
+image:https://img.shields.io/github/forks/dev-centr/github-actions-editor.svg?style=for-the-badge[Forks]
+image:https://img.shields.io/github/stars/dev-centr/github-actions-editor.svg?style=for-the-badge[Stars]
+image:https://img.shields.io/github/issues/dev-centr/github-actions-editor.svg?style=for-the-badge[Issues]
+image:https://img.shields.io/github/license/dev-centr/github-actions-editor.svg?style=for-the-badge[License]
+endif::[]
 
 = GitHub Actions Editor
-:toc: macro
-:toc-title: Contents
-:toclevels: 2
-:icons: font
+
+An editor for GitHub Actions — a desktop GUI application for editing workflows with marketplace discovery and GitHub integration.
+
+link:https://github.com/dev-centr/github-actions-editor/issues[Report Bug] ·
+link:https://github.com/dev-centr/github-actions-editor/issues[Request Feature]
+
+== About The Project
 
 A desktop GUI application for editing GitHub Actions workflows with marketplace discovery and GitHub integration.
 
 image::https://img.shields.io/badge/rust-1.75+-orange.svg[Rust 1.75+]
 image::https://img.shields.io/badge/iced-0.13-blue.svg[Iced 0.13]
-image::https://img.shields.io/badge/license-MIT-green.svg[MIT License]
-
-toc::[]
-
-== Features
 
 * **Visual Workflow Editor** — Edit GitHub Actions workflows with a desktop-native UI
 * **Marketplace Discovery** — Search and browse actions from the GitHub Marketplace with fuzzy search
@@ -23,24 +40,15 @@ toc::[]
 * **Action Metadata** — Auto-fetch and display action inputs, versions, and documentation
 * **Repository Integration** — Discover secrets, variables, and repository settings
 
-== Screenshots
-
-_Coming soon_
-
 == Installation
 
 === From Source
 
 [source,bash]
 ----
-# Clone the repository
-git clone https://github.com/amdphreak/github-actions-editor
+git clone https://github.com/dev-centr/github-actions-editor
 cd github-actions-editor
-
-# Build release binary
 cargo build --release
-
-# Run the application
 ./target/release/github-actions-editor
 ----
 
@@ -79,48 +87,17 @@ The action browser supports:
 * **Version selection** — Choose from available tags (v4, v4.1.0, etc.)
 * **Metadata preview** — See inputs, outputs, and descriptions before inserting
 
-== Architecture
-
-[source]
-----
-src/
-├── main.rs           # Application entry point
-├── app.rs            # Main application state and update logic
-├── models/           # Data models (Workflow, Action, Marketplace)
-│   ├── workflow.rs   # GitHub Actions workflow YAML model
-│   ├── action.rs     # Action metadata (action.yml)
-│   └── marketplace.rs# Marketplace search results
-├── github/           # GitHub API integration
-│   ├── auth.rs       # Secure token storage
-│   ├── client.rs     # High-level API client
-│   └── marketplace.rs# Marketplace search and discovery
-├── cache/            # TTL-based caching
-│   ├── store.rs      # File-based cache storage
-│   └── entries.rs    # Cache keys and TTL values
-└── ui/               # Iced UI components
-    ├── theme.rs      # GitHub-inspired dark theme
-    ├── components.rs # Reusable widgets
-    └── views.rs      # Screen layouts
-----
-
-== Development
+=== Development
 
 [source,bash]
 ----
-# Run in debug mode
 cargo run
-
-# Run with logging
 RUST_LOG=debug cargo run
-
-# Run tests
 cargo test
-
-# Check for issues
 cargo clippy
 ----
 
-== Configuration
+=== Configuration
 
 The application stores data in platform-specific directories:
 
@@ -139,6 +116,19 @@ The application stores data in platform-specific directories:
 
 Cache data is stored separately in the platform's cache directory.
 
+== Architecture
+
+[source]
+----
+src/
+├── main.rs           # Application entry point
+├── app.rs            # Main application state and update logic
+├── models/           # Data models (Workflow, Action, Marketplace)
+├── github/           # GitHub API integration
+├── cache/            # TTL-based caching
+└── ui/               # Iced UI components
+----
+
 == Contributing
 
 Contributions are welcome! Please open an issue or pull request.
@@ -153,3 +143,9 @@ MIT License. See link:LICENSE[LICENSE] file.
 * https://octocrab.rs[Octocrab] — GitHub API client
 * https://github.com/lotabout/fuzzy-matcher[fuzzy-matcher] — Fuzzy string matching
 
+== Contact
+
+DevCentr.org — support@devcentr.org
+
+* Project: https://github.com/dev-centr/github-actions-editor
+* Site: https://devcentr.org
