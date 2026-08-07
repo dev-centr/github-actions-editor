@@ -3,21 +3,12 @@ ifndef::env-github[:icons: font]
 :toclevels: 2
 :sectanchors:
 
-ifndef::env-github[]
+[[readme-top]]
 image:https://img.shields.io/github/contributors/dev-centr/github-actions-editor.svg?style=for-the-badge[Contributors,link=https://github.com/dev-centr/github-actions-editor/graphs/contributors]
 image:https://img.shields.io/github/forks/dev-centr/github-actions-editor.svg?style=for-the-badge[Forks,link=https://github.com/dev-centr/github-actions-editor/network/members]
 image:https://img.shields.io/github/stars/dev-centr/github-actions-editor.svg?style=for-the-badge[Stars,link=https://github.com/dev-centr/github-actions-editor/stargazers]
 image:https://img.shields.io/github/issues/dev-centr/github-actions-editor.svg?style=for-the-badge[Issues,link=https://github.com/dev-centr/github-actions-editor/issues]
 image:https://img.shields.io/github/license/dev-centr/github-actions-editor.svg?style=for-the-badge[License,link=https://github.com/dev-centr/github-actions-editor/blob/main/LICENSE]
-endif::[]
-
-ifdef::env-github[]
-image:https://img.shields.io/github/contributors/dev-centr/github-actions-editor.svg?style=for-the-badge[Contributors]
-image:https://img.shields.io/github/forks/dev-centr/github-actions-editor.svg?style=for-the-badge[Forks]
-image:https://img.shields.io/github/stars/dev-centr/github-actions-editor.svg?style=for-the-badge[Stars]
-image:https://img.shields.io/github/issues/dev-centr/github-actions-editor.svg?style=for-the-badge[Issues]
-image:https://img.shields.io/github/license/dev-centr/github-actions-editor.svg?style=for-the-badge[License]
-endif::[]
 
 = GitHub Actions Editor
 
@@ -40,6 +31,8 @@ image::https://img.shields.io/badge/iced-0.13-blue.svg[Iced 0.13]
 * **Action Metadata** — Auto-fetch and display action inputs, versions, and documentation
 * **Repository Integration** — Discover secrets, variables, and repository settings
 
+link:#readme-top[back to top]
+
 == Installation
 
 === From Source
@@ -58,6 +51,8 @@ cargo build --release
 * On Windows: Visual Studio Build Tools
 * On Linux: `libssl-dev`, `pkg-config`
 * On macOS: Xcode Command Line Tools
+
+link:#readme-top[back to top]
 
 == Usage
 
@@ -116,6 +111,8 @@ The application stores data in platform-specific directories:
 
 Cache data is stored separately in the platform's cache directory.
 
+link:#readme-top[back to top]
+
 == Architecture
 
 [source]
@@ -133,9 +130,13 @@ src/
 
 Contributions are welcome! Please open an issue or pull request.
 
+link:#readme-top[back to top]
+
 == License
 
 MIT License. See link:LICENSE[LICENSE] file.
+
+link:#readme-top[back to top]
 
 == Acknowledgments
 
@@ -149,3 +150,5 @@ DevCentr.org — support@devcentr.org
 
 * Project: https://github.com/dev-centr/github-actions-editor
 * Site: https://devcentr.org
+
+link:#readme-top[back to top]
